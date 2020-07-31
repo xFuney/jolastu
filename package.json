@@ -1,0 +1,32 @@
+{
+  "name": "jolastu",
+  "version": "0.1.0",
+  "description": "Yet another Discord bot for music and giveaways.",
+  "main": "bot/index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xFuney/jolastu.git"
+  },
+  "author": "xFuney <56867550+xFuney@users.noreply.github.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xFuney/jolastu/issues"
+  },
+  "homepage": "https://github.com/xFuney/jolastu#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "better-sqlite3": "^7.1.0",
+    "csv-parser": "^2.3.3",
+    "discord-giveaways": "^4.1.8",
+    "discord.js": "^12.2.0",
+    "ms": "^2.1.2",
+    "opus": "0.0.0",
+    "os-utils": "0.0.14",
+    "prompt-sync": "^4.2.0",
+    "youtube-search-promise": "^1.0.3",
+    "ytdl-core": "^2.1.7"
+  }
+}
