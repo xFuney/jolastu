@@ -26,7 +26,41 @@ function millisToMinutesAndSeconds(millis) {
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
 
+function clean(text) {
+    if (typeof(text) === "string")
+      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else
+        return text;
+  }
+
+// Commands
+
 module.exports.commands = {
+    "eval": {
+        pretty_name: "eval",
+        description: "OWNER-ONLY: Run some JavaScript. Highly powerful, don't mess with this.",
+        execute: async function(message, args, client, Discord) {
+            if(message.author.id !== BOT_CONFIG.bot_owner_id) return;
+
+            try {
+                var link = ""
+                var i;
+                var query = ""
+
+                for (i = 1; i < args.length; i++) {
+                    query = query + args[i] + " "
+                }
+              let evaled = eval(query);
+         
+              if (typeof evaled !== "string")
+                evaled = require("util").inspect(evaled);
+         
+              message.channel.send(clean(evaled), {code:"xl"});
+            } catch (err) {
+                message.channel.send("**FAILED: " + clean(err) + "**")
+            }
+        }
+    },
     "about": {
         pretty_name: "about",
         description: "Get information about the bot.",

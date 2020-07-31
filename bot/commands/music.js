@@ -18,7 +18,7 @@ const https = require('https');
 var search = require("youtube-search-promise");
 
 if (!process.env.KEY_YT) {
-    //console.log("FATAL: No environment variable called 'KEY_YT'! Music commands will not be enabled.")
+    console.log("FATAL: No environment variable called 'KEY_YT'! Music commands will not be enabled.")
 
     module.exports.categoryName = "Music (disabled)"
     module.exports.version = "0.0.1"
