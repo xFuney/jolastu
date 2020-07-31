@@ -9,6 +9,7 @@
 const Logging = require('../common/Logging')
 const Settings = require('../common/Settings')
 const Command = require('../common/Command')
+const Patches = require('../common/Patches')
 
 // NodeJS Standard Libraries.
 const fs = require('fs');
@@ -19,6 +20,11 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const ms = require("ms");
 const { GiveawaysManager } = require("discord-giveaways");
+
+// Versioning stuff.
+client.versions = {
+    "framework": "Jolastu v0.1.0"
+}
 
 var BOT_CONFIG = Settings.loadConfig();
 
@@ -39,10 +45,6 @@ const manager = new GiveawaysManager(client, {
 // We now have a giveawaysManager property to access the manager everywhere!
 client.giveawaysManager = manager;
 
-// Initialise things for patch loading.
-const patchDirectory = fs.readdirSync("./patches").filter(file => file.endsWith('.js'));
-const patches = []
-
 // Load commands
 
 var commands = Command.loadCommands();
@@ -55,13 +57,8 @@ client.on('ready', () => {
     
     client.user.setActivity(`over /r/iPod and some other servers.`, { type: 'WATCHING'});
 
-    for (const file of patchDirectory) {
-        patches[file.split('.').slice(0, -1).join('.')] = require("../patches/"+file);
-        if (patches[file.split('.').slice(0, -1).join('.')].config !== undefined) {
-            // Load bot patch
-            patches[file.split('.').slice(0, -1).join('.')].run(client, Discord);
-        }
-    }
+    Patches.execPatches(client, Discord);
+
 });
 
 // This is some old Jolastu code till I can be bothered to rewrite message handler.

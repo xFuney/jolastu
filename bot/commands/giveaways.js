@@ -16,6 +16,7 @@ var BOT_CONFIG = Settings.loadConfig();
 
 // Category Name and Descripton
 module.exports.categoryName = "Giveaways"
+module.exports.version = "0.0.1"
 module.exports.categoryDescription = "Do giveaways with the bot."
 
 module.exports.commands = {

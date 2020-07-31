@@ -12,6 +12,7 @@ var commands = [];
 
 // Category Name and Descripton
 module.exports.categoryName = "Utilities"
+module.exports.version = "0.0.1"
 module.exports.categoryDescription = "Utilities that the bot has (including help and ping)."
 
 // Commands
@@ -57,7 +58,7 @@ module.exports.commands = {
                 }
     
                 if (found === false) {
-                    MesgElement.channel.send("not found")
+                    MesgElement.channel.send("Category doesn't exist." )
                     return;
                 }
     
