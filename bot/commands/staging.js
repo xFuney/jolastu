@@ -78,21 +78,21 @@ module.exports.commands = {
             var user = message.guild.member(userid);
 
             console.log(user);
-            /*
+            
             const exampleEmbed = new Discord.MessageEmbed()
                 .setColor('7289da')
-                .setAuthor('About ' + BOT_CONFIG.bot_name, BOT_CONFIG.bot_image)
-                .setThumbnail(BOT_CONFIG.bot_image)
+                .setAuthor('About ' + user.user.username + '#' + user.user.tag, BOT_CONFIG.bot_image)
+                .setThumbnail(user.displayAvatarURL())
                 .setTimestamp()
                 .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
 
-            exampleEmbed.addField("Framework", client.versions.framework, true)
-            exampleEmbed.addField("Bot Discord ID", client.user.id, true)
-            exampleEmbed.addField("Bot Discord Tag", client.user.tag, false)
-            exampleEmbed.addField("Uptime:", millisToMinutesAndSeconds(client.uptime),true)
+            //exampleEmbed.addField("Framework", client.versions.framework, true)
+            //exampleEmbed.addField("Bot Discord ID", client.user.id, true)
+            //exampleEmbed.addField("Bot Discord Tag", client.user.tag, false)
+            //exampleEmbed.addField("Uptime:", millisToMinutesAndSeconds(client.uptime),true)
 
             message.channel.send(exampleEmbed);
-            */
+            
         }
     }
 }
