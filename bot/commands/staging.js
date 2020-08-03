@@ -47,10 +47,10 @@ module.exports.commands = {
 
             var userid;
 
-            if (args[1]) {
-                userid = args[1]
-            } else {
+            if (!args[1]) {
                 userid = message.author.id
+            } else {
+                
             }
 
             if (message.mentions.members.first()) {
