@@ -101,8 +101,8 @@ module.exports.commands = {
             exampleEmbed.addField("User ID", user.user.id, true)
             exampleEmbed.addField("Created at", dateCreated.toUTCString() + " (" + daysSinceCreation + " days ago)", true)
             exampleEmbed.addField("Joined at", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", true)
-            //exampleEmbed.addField("Bot Discord Tag", client.user.tag, false)
-            //exampleEmbed.addField("Uptime:", millisToMinutesAndSeconds(client.uptime),true)
+            exampleEmbed.addField("Status", user.user.presence.status, false)
+            exampleEmbed.addField("Highest role", user.highestRole.name ,true)
 
             message.channel.send(exampleEmbed);
             
