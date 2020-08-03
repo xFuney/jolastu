@@ -98,11 +98,11 @@ module.exports.commands = {
                 .setTimestamp()
                 .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
 
-            exampleEmbed.addField("User ID", user.user.id, true)
-            exampleEmbed.addField("Created at", dateCreated.toUTCString() + " (" + daysSinceCreation + " days ago)", true)
-            exampleEmbed.addField("Joined at", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", true)
-            exampleEmbed.addField("Status", user.user.presence.status, true)
-            exampleEmbed.addField("Highest role", user.roles.highest.name ,true)
+            exampleEmbed.addField("User ID", user.user.id, false)
+            exampleEmbed.addField("Created at", dateCreated.toUTCString() + " (" + daysSinceCreation + " days ago)", false)
+            exampleEmbed.addField("Joined at", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", false)
+            exampleEmbed.addField("Status", user.user.presence.status, false)
+            exampleEmbed.addField("Highest role", user.roles.highest.name ,false)
 
             message.channel.send(exampleEmbed);
             
