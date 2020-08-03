@@ -76,6 +76,7 @@ module.exports.commands = {
             }
 
             var user = message.guild.member(userid);
+            var dateCreated = new Date(user.user.createdAt)
 
             console.log(user);
             
@@ -87,7 +88,7 @@ module.exports.commands = {
                 .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
 
             exampleEmbed.addField("User ID", user.user.id, true)
-            exampleEmbed.addField("Creation Timestamp", user.user.createdTimestamp, true)
+            exampleEmbed.addField("Creation Timestamp", dateCreated.toUTCString(), true)
             //exampleEmbed.addField("Bot Discord Tag", client.user.tag, false)
             //exampleEmbed.addField("Uptime:", millisToMinutesAndSeconds(client.uptime),true)
 
