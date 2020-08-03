@@ -118,7 +118,7 @@ module.exports.commands = {
 
             BOT_CONFIG = Settings.loadConfig();
 
-            var user = message.guild.member(userid);
+            //var user = message.guild.member(userid);
 
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
