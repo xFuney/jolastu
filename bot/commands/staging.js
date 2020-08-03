@@ -81,13 +81,13 @@ module.exports.commands = {
             
             const exampleEmbed = new Discord.MessageEmbed()
                 .setColor('7289da')
-                .setAuthor('About ' + user.user.username + '#' + user.user.tag, BOT_CONFIG.bot_image)
+                .setAuthor('About ' + user.user.tag, BOT_CONFIG.bot_image)
                 .setThumbnail(user.user.displayAvatarURL())
                 .setTimestamp()
                 .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
 
-            //exampleEmbed.addField("Framework", client.versions.framework, true)
-            //exampleEmbed.addField("Bot Discord ID", client.user.id, true)
+            exampleEmbed.addField("User ID", user.user.id, true)
+            exampleEmbed.addField("Creation Timestamp", user.user.createdTimestamp, true)
             //exampleEmbed.addField("Bot Discord Tag", client.user.tag, false)
             //exampleEmbed.addField("Uptime:", millisToMinutesAndSeconds(client.uptime),true)
 
