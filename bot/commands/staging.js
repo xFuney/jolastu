@@ -103,6 +103,7 @@ module.exports.commands = {
             exampleEmbed.addField("Joined at", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", false)
             exampleEmbed.addField("Status", user.user.presence.status, false)
             exampleEmbed.addField("Highest role", user.roles.highest.name ,false)
+            exampleEmbed.addField("Last spoke in", "<#" + user.user.lastMessageChannelID + ">", false)
 
             message.channel.send(exampleEmbed);
             

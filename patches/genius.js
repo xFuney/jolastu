@@ -8,7 +8,7 @@
 const Settings = require("../common/Settings");
 const ms = require('ms');
 
-const prefix = "%"
+const prefix = "$"
 
 const BOT_CONFIG = Settings.loadConfig();
 
