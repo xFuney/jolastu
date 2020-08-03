@@ -7,32 +7,15 @@ const Logging = require('../../common/Logging')
 const Settings = require('../../common/Settings')
 const Command = require('../../common/Command')
 const Patches = require('../../common/Patches');
-const { Guild } = require('discord.js');
 
 
 var BOT_CONFIG = Settings.loadConfig();
 
 
 // Category Name and Descripton
-module.exports.categoryName = "Staging"
+module.exports.categoryName = "Information"
 module.exports.version = "0.0.1"
-module.exports.categoryDescription = "Commands which are in staging - are either unfinished, untested or generally broken."
-
-
-// Fns
-
-function millisToMinutesAndSeconds(millis) {
-    var minutes = Math.floor(millis / 60000);
-    var seconds = ((millis % 60000) / 1000).toFixed(0);
-    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-}
-
-function clean(text) {
-    if (typeof(text) === "string")
-      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    else
-        return text;
-  }
+module.exports.categoryDescription = "Get information about users and servers."
 
 // Commands
 
