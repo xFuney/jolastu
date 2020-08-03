@@ -2,7 +2,7 @@
 
 const api_database = require("better-sqlite3")
 
-initialiseDatabase = function(guildID) {
+function initialiseDatabase(guildID) {
     let configDir = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share")
     let dbDir = path.join(configDir, "/jolastu_" + guildID + ".db")
 
@@ -12,7 +12,7 @@ initialiseDatabase = function(guildID) {
     return db;
 }
 
-check_table = function (guildID, tableName) {
+function check_table(guildID, tableName) {
     let database = initialiseDatabase(guildID);
     try {
         let statement = database.prepare("SELECT * FROM " + tableName).all();
