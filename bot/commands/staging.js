@@ -80,7 +80,7 @@ module.exports.commands = {
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
             var dateCreated = new Date(user.user.createdAt);
-            var dateJoined = new Date(user.user.joinedAt);
+            var dateJoined = new Date(user.joinedTimestamp);
             
             var currentDate = new Date();
 
