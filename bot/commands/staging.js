@@ -47,7 +47,9 @@ module.exports.commands = {
 
             var userid;
 
-            if (args[1] === undefined) {
+            if (args[1]) {
+                userid = args[1]
+            } else {
                 userid = message.author.id
             }
 
