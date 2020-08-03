@@ -109,5 +109,61 @@ module.exports.commands = {
             message.channel.send(exampleEmbed);
             
         }
+    },
+    "serverinfo": {
+        pretty_name: "serverinfo",
+        description: "Get information about this server.",
+        execute: async function(message, args, client, Discord) {
+            // Profile.
+
+            BOT_CONFIG = Settings.loadConfig();
+
+            var user = message.guild.member(userid);
+
+            const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+            var dateCreated = new Date(message.guild.createdAt);
+            var dateJoined = new Date(message.guild.joinedTimestamp);
+            var premTier = "None";
+            switch (message.guild.premiumTier) {
+                case 1:
+                    premTier = "Tier One"
+                    break;
+                case 2:
+                    premTier = "Tier Two";
+                    break;
+                case 3:
+                    premTier = "Tier Three";
+                    break;
+                default:
+                    premTier = "None";
+                    break;
+            }
+
+            var currentDate = new Date();
+
+            var daysSinceCreation = Math.round(Math.abs((currentDate - dateCreated) / oneDay));
+            var daysSinceJoin = Math.round(Math.abs((currentDate - dateJoined) / oneDay));
+
+            console.log(user);
+            
+            const exampleEmbed = new Discord.MessageEmbed()
+                .setColor('7289da')
+                .setAuthor('About ' + message.guild.name, BOT_CONFIG.bot_image)
+                .setThumbnail(message.guild.iconURL())
+                .setTimestamp()
+                .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
+
+            exampleEmbed.addField("Server ID", message.guild.id, false)
+            exampleEmbed.addField("Created at", dateCreated.toUTCString() + " (" + daysSinceCreation + " days ago)", false)
+            exampleEmbed.addField("Bot has been here since", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", false)
+            exampleEmbed.addField("Current boost count", message.guild.premiumSubscriptionCount, false)
+            exampleEmbed.addField("Premium tier", premTier, false)
+            exampleEmbed.addField("Region", message.guild.region,false)
+            
+
+            message.channel.send(exampleEmbed);
+            
+        }
     }
 }
