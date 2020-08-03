@@ -82,7 +82,7 @@ module.exports.commands = {
             const exampleEmbed = new Discord.MessageEmbed()
                 .setColor('7289da')
                 .setAuthor('About ' + user.user.username + '#' + user.user.tag, BOT_CONFIG.bot_image)
-                .setThumbnail(user.displayAvatarURL())
+                .setThumbnail(user.user.displayAvatarURL())
                 .setTimestamp()
                 .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
 
