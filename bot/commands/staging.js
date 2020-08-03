@@ -57,12 +57,15 @@ module.exports.commands = {
                 // Is mention.
                 userid = message.mentions.members.first().id
             } else {
-                // Is a standard args[1] id. but check first.
-                if (args[1].length != 18) {
-                    userid = message.author.id
-                } else {
-                    // Is an actual ID!
-                    userid = args[1]
+                // Check if user ID is the message author first, otherwise don't do anything
+                if (userid != message.author.id) {
+                    // Is a standard args[1] id. but check first.
+                    if (args[1].length != 18) {
+                        userid = message.author.id
+                    } else {
+                        // Is an actual ID!
+                        userid = args[1]
+                    }
                 }
             }
 
