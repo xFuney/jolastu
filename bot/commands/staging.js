@@ -87,7 +87,8 @@ module.exports.commands = {
             var daysSinceCreation = Math.round(Math.abs((currentDate - dateCreated) / oneDay));
             var daysSinceJoin = Math.round(Math.abs((currentDate - dateJoined) / oneDay));
 
-            
+            var lastChannel =  user.user.lastMessageChannelID || "Hasn't spoke"
+            lastChannel = lastChannel != "Hasn't spoke" ? "<#" + lastChannel + ">" : lastChannel
 
             console.log(user);
             
@@ -103,7 +104,7 @@ module.exports.commands = {
             exampleEmbed.addField("Joined at", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", false)
             exampleEmbed.addField("Status", user.user.presence.status, false)
             exampleEmbed.addField("Highest role", user.roles.highest.name ,false)
-            exampleEmbed.addField("Last spoke in", "<#" + user.user.lastMessageChannelID + ">", false)
+            exampleEmbed.addField("Last spoke in", lastChannel, false)
 
             message.channel.send(exampleEmbed);
             
