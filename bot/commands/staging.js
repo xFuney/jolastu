@@ -76,8 +76,14 @@ module.exports.commands = {
             }
 
             var user = message.guild.member(userid);
-            var dateCreated = new Date(user.user.createdAt)
-            var daysSinceCreation = user.user.createdAt / 86400;
+
+            const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+            var dateCreated = new Date(user.user.createdAt);
+            var currentDate = new Date();
+            var daysSinceCreation = Math.round(Math.abs((currentDate - dateCreated) / oneDay));
+
+            
 
             console.log(user);
             
