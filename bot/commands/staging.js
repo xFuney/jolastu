@@ -80,8 +80,12 @@ module.exports.commands = {
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
             var dateCreated = new Date(user.user.createdAt);
+            var dateJoined = new Date(user.user.joinedAt);
+            
             var currentDate = new Date();
+
             var daysSinceCreation = Math.round(Math.abs((currentDate - dateCreated) / oneDay));
+            var daysSinceJoin = Math.round(Math.abs((currentDate - dateJoined) / oneDay));
 
             
 
@@ -95,7 +99,8 @@ module.exports.commands = {
                 .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
 
             exampleEmbed.addField("User ID", user.user.id, true)
-            exampleEmbed.addField("Creation Timestamp", dateCreated.toUTCString() + "(" + daysSinceCreation + " days ago)", true)
+            exampleEmbed.addField("Created at", dateCreated.toUTCString() + " (" + daysSinceCreation + " days ago)", true)
+            exampleEmbed.addField("Joined at", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", true)
             //exampleEmbed.addField("Bot Discord Tag", client.user.tag, false)
             //exampleEmbed.addField("Uptime:", millisToMinutesAndSeconds(client.uptime),true)
 
