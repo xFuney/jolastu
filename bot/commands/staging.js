@@ -145,7 +145,7 @@ module.exports.commands = {
             var daysSinceCreation = Math.round(Math.abs((currentDate - dateCreated) / oneDay));
             var daysSinceJoin = Math.round(Math.abs((currentDate - dateJoined) / oneDay));
 
-            console.log(user);
+            //console.log(user);
             
             const exampleEmbed = new Discord.MessageEmbed()
                 .setColor('7289da')
