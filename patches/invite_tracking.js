@@ -35,11 +35,11 @@ module.exports.run = async function(client, Discord) {
     g.fetchInvites().then(guildInvites => {
       console.log(g.name)
       invites[g.id] = guildInvites;
-      console.log(invites)
+      //console.log(invites)
     })
     .catch( (err) => {
         // Do no shit.
-        console.log("Missing permissions on a guild. This generally isn't a problem, some things won't work though.")
+        //console.log("Missing permissions on a guild. This generally isn't a problem, some things won't work though.")
     });
   });
 
@@ -53,7 +53,7 @@ module.exports.run = async function(client, Discord) {
       // Look through the invites, find the one for which the uses went up.
       const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
       // This is just to simplify the message being sent below (inviter doesn't have a tag property)
-      const inviter = client.users.get(invite.inviter.id);
+      const inviter = client.users.cache.get(invite.inviter.id);
       // Get the log channel (change to your liking)
       const logChannel = member.guild.channels.find(channel => channel.name === "test-log-test-log");
       // A real basic message with the information we need. 
