@@ -28,12 +28,15 @@ module.exports.config = function() {
 // Client and Discord objects are both passed down so you can interface as the appropriate bot.
 module.exports.run = async function(client, Discord) {
   // "ready" isn't really ready. We need to wait a spell.
-  wait(1000);
+  wait(1000);   
 
   // Load all invites for all guilds and save them to the cache.
   client.guilds.cache.forEach(g => {
     g.fetchInvites().then(guildInvites => {
       invites[g.id] = guildInvites;
+    })
+    .catch( (err) => {
+        // Do no shit.
     });
   });
 
