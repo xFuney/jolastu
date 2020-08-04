@@ -57,7 +57,34 @@ module.exports.run = async function(client, Discord) {
       // Get the log channel (change to your liking)
       const logChannel = member.guild.channels.cache.find(channel => channel.name === "test-log-test-log");
       // A real basic message with the information we need. 
-      logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
+    
+
+      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+      var dateCreated = new Date(member.user.createdAt);
+      var dateJoined = new Date(member.joinedTimestamp);
+      
+      var currentDate = new Date();
+
+      var daysSinceCreation = Math.round(Math.abs((currentDate - dateCreated) / oneDay));
+      var daysSinceJoin = Math.round(Math.abs((currentDate - dateJoined) / oneDay));
+
+      const exampleEmbed = new Discord.MessageEmbed()
+        .setColor('7289da')
+        .setAuthor(member.user.tag + " joined", BOT_CONFIG.bot_image)
+        .setThumbnail(member.user.displayAvatarURL())
+        .setTimestamp()
+        .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
+
+      exampleEmbed.addField("User ID", member.user.id, false)
+      exampleEmbed.addField("Created at", dateCreated.toUTCString() + " (" + daysSinceCreation + " days ago)", false)
+      //exampleEmbed.addField("Joined at", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", false)
+      exampleEmbed.addField("Invited using code", invite.code, false)
+      exampleEmbed.addField("Owner of invite", inviter.tag ,false)
+      exampleEmbed.addField("Amount of times invite used", invite.uses, false)
+
+      //logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
+      logChannel.send(exampleEmbed)
     });
   });
 
