@@ -21,7 +21,7 @@ if (!process.env.KEY_YT) {
     console.log("FATAL: No environment variable called 'KEY_YT'! Music commands will not be enabled.")
 
     module.exports.categoryName = "Music (disabled)"
-    module.exports.version = "0.0.2"
+    module.exports.version = "0.0.3"
     module.exports.categoryDescription = "Play music with the bot."
     return
 }
@@ -37,7 +37,7 @@ const queue = new Map();
 
 // Category Name and Descripton
 module.exports.categoryName = "Music"
-module.exports.version = "0.0.2"
+module.exports.version = "0.0.3"
 module.exports.categoryDescription = "Play music with the bot."
 
 // Global Commansd
