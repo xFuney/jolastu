@@ -11,6 +11,15 @@ const Patches = require('../../common/Patches');
 // "External" - needs rewritten soon.
 const api_db = require("../../common/Database");
 
+if (process.env.JOLASTU_DEV != "enable") {
+    module.exports.categoryName = "Moderation (disabled)"
+    module.exports.version = "0.0.0"
+    module.exports.categoryDescription = "Currently under testing and not ready for public."
+    
+    return;
+}
+
+
 function getUserFromMention(mention, client) {
     if (!mention) return;
 
