@@ -39,7 +39,8 @@ module.exports.run = async function(client, Discord) {
     })
     .catch( (err) => {
         // Do no shit.
-        //console.log("Missing permissions on a guild. This generally isn't a problem, some things won't work though.")
+        console.log("Missing permissions on a guild. This generally isn't a problem, some things won't work though.")
+        console.log(err)
     });
   });
 
