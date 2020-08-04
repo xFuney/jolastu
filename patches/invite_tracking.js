@@ -33,6 +33,7 @@ module.exports.run = async function(client, Discord) {
   // Load all invites for all guilds and save them to the cache.
   client.guilds.cache.forEach(g => {
     g.fetchInvites().then(guildInvites => {
+      console.log(g.name)
       invites[g.id] = guildInvites;
     })
     .catch( (err) => {
