@@ -21,7 +21,7 @@ if (!process.env.KEY_YT) {
     console.log("FATAL: No environment variable called 'KEY_YT'! Music commands will not be enabled.")
 
     module.exports.categoryName = "Music (disabled)"
-    module.exports.version = "0.0.2"
+    module.exports.version = "0.0.3"
     module.exports.categoryDescription = "Play music with the bot."
     return
 }
@@ -37,7 +37,7 @@ const queue = new Map();
 
 // Category Name and Descripton
 module.exports.categoryName = "Music"
-module.exports.version = "0.0.2"
+module.exports.version = "0.0.3"
 module.exports.categoryDescription = "Play music with the bot."
 
 // Global Commansd
@@ -439,13 +439,26 @@ module.exports.commands = {
                 query = query + args[i] + " "
             }
             
-            if (results === undefined) return false;
-            if (results === undefined) return false; // Should mitigate link of undefined.
+            var results = results || undefined;
+
+            
 
             //console.log(query)
             search(query, opts) 
                 .then((results) => {
                     //console.log(results);
+                    if (results === undefined)  {
+                        const exampleEmbed = new Discord.MessageEmbed()
+                            .setColor('ff0000')
+                            .setTitle("Cannot play!")
+                            .setAuthor('Fatal Exception', BOT_CONFIG.bot_image)
+                            .setDescription("Could not find any results for your search query.")
+                            .setTimestamp()
+                            .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
+
+                        message.channel.send(exampleEmbed)
+                        return false  
+                    }
                     playMusic(message, args, client, Discord, results);
                 });
 
