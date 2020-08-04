@@ -447,8 +447,18 @@ module.exports.commands = {
             search(query, opts) 
                 .then((results) => {
                     //console.log(results);
-                    if (results === undefined) return false;
-                    if (results === undefined) return false; // Should mitigate link of undefined.
+                    if (results === undefined)  {
+                        const exampleEmbed = new Discord.MessageEmbed()
+                            .setColor('ff0000')
+                            .setTitle("Cannot play!")
+                            .setAuthor('Fatal Exception', BOT_CONFIG.bot_image)
+                            .setDescription("Could not find any results for your search query.")
+                            .setTimestamp()
+                            .setFooter('Brought to you by ' + BOT_CONFIG.bot_name);
+
+                        message.channel.send(exampleEmbed)
+                        return false  
+                    }
                     playMusic(message, args, client, Discord, results);
                 });
 
