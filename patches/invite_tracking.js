@@ -33,7 +33,7 @@ module.exports.run = async function(client, Discord) {
   // Load all invites for all guilds and save them to the cache.
   client.guilds.cache.forEach(g => {
     g.fetchInvites().then(guildInvites => {
-      console.log(g.name)
+      //console.log(g.name)
       invites[g.id] = guildInvites;
       //console.log(invites)
     })
@@ -80,7 +80,7 @@ module.exports.run = async function(client, Discord) {
       exampleEmbed.addField("Created at", dateCreated.toUTCString() + " (" + daysSinceCreation + " days ago)", false)
       //exampleEmbed.addField("Joined at", dateJoined.toUTCString() + " (" + daysSinceJoin + " days ago)", false)
       exampleEmbed.addField("Invited using code", invite.code, false)
-      exampleEmbed.addField("Owner of invite", inviter.tag ,false)
+      exampleEmbed.addField("Owner of invite", inviter.tag + "(id: " + inviter.id + ")" ,false)
       exampleEmbed.addField("Amount of times invite used", invite.uses, false)
 
       //logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
