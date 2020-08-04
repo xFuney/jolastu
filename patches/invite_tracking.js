@@ -35,6 +35,7 @@ module.exports.run = async function(client, Discord) {
     g.fetchInvites().then(guildInvites => {
       console.log(g.name)
       invites[g.id] = guildInvites;
+      console.log(invites)
     })
     .catch( (err) => {
         // Do no shit.
