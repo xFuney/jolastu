@@ -439,13 +439,16 @@ module.exports.commands = {
                 query = query + args[i] + " "
             }
             
-            if (results === undefined) return false;
-            if (results === undefined) return false; // Should mitigate link of undefined.
+            var results = results || undefined;
+
+            
 
             //console.log(query)
             search(query, opts) 
                 .then((results) => {
                     //console.log(results);
+                    if (results === undefined) return false;
+                    if (results === undefined) return false; // Should mitigate link of undefined.
                     playMusic(message, args, client, Discord, results);
                 });
 
