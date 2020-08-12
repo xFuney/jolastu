@@ -418,6 +418,18 @@ module.exports.commands = {
                 return false  
             }
 
+            if (message.member.roles.cache.some(role => role.name === 'MusicBlock')) {
+                const exampleEmbed = new Discord.MessageEmbed()
+                    .setColor('ff0000')
+                    .setTitle('Cannot play!')
+                    .setAuthor('Fatal Exception', BOT_CONFIG.bot_image)
+                    .setDescription("You have been blacklisted from using the music functions of " + BOT_CONFIG.bot_name)
+                    .setTimestamp()
+                    .setFooter('Brought to you by ' + BOT_CONFIG.bot_name)
+                message.channel.send(exampleEmbed)
+                return false
+            }
+
             const permissions = voice_channel.permissionsFor(message.client.user);
             if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
                 const exampleEmbed = new Discord.MessageEmbed()
